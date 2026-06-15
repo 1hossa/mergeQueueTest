@@ -56,3 +56,19 @@ jobs:
           echo "- Merge group head sha: ${{ github.event.merge_group.head_sha || 'n/a' }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Shards: 8" >> "$GITHUB_STEP_SUMMARY"
           echo "- Tests (logical): ${{ inputs.tests }}" >> "$GITHUB_STEP_SUMMARY"
+
+  gate:
+    name: gate
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+
+    steps:
+      - name: Enforce suite result
+        run: |
+          echo "test result: ${{ needs.test.result }}"
+          if [ "${{ needs.test.result }}" != "success" ]; then
+            echo "Heavy suite failed"
+            exit 1
+          fi
+          echo "Heavy suite passed"

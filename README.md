@@ -28,15 +28,16 @@
 1. Создайте две защищаемые ветки: `main-no-mq` и `main`.
 2. Настройте Branch protection для `main-no-mq`:
 	 - включите Required status checks
-	 - выберите check из workflow `CI Baseline (No Merge Queue)`
+	 - выберите стабильный check `heavy-suite / gate`
 	 - не включайте Merge Queue
 3. Настройте Branch protection для `main`:
 	 - включите Required status checks
-	 - выберите check из workflow `CI Merge Queue`
+	 - выберите стабильный check `heavy-suite / gate`
 	 - включите `Require merge queue`
 4. Делайте PR в обе ветки с одинаковой нагрузкой и сравнивайте Actions-метрики.
 
 Важно: для реальной работы Merge Queue workflow обязан слушать событие `merge_group`.
+Важно: check `heavy-suite / gate` появится в списке только после первого запуска Actions на PR в целевую ветку.
 
 ## Быстрая локальная симуляция
 
