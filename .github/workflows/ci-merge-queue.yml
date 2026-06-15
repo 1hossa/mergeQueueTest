@@ -2,9 +2,9 @@ name: CI Merge Queue
 
 on:
   pull_request:
-    branches: [main-mq]
+    branches: [main]
   merge_group:
-    branches: [main-mq]
+    branches: [main]
 
 permissions:
   contents: read

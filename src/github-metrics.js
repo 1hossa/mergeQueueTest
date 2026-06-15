@@ -147,7 +147,7 @@ function summarizeRuns(runs, days) {
 
 const repo = parseArg("repo", process.env.GITHUB_REPOSITORY || "");
 const baselineBranch = parseArg("baseline", "main-no-mq");
-const queueBranch = parseArg("queue", "main-mq");
+const queueBranch = parseArg("queue", "main");
 const days = Number(parseArg("days", 14));
 const outdir = parseArg("outdir", "results");
 const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
