@@ -17,7 +17,7 @@
 	- сценарий без Merge Queue
 - `.github/workflows/ci-merge-queue.yml`
 	- события: `pull_request`, `merge_group`
-	- целевая ветка: `main-mq`
+	- целевая ветка: `main`
 	- сценарий с нативным GitHub Merge Queue
 - `.github/workflows/heavy-suite.yml`
 	- reusable heavy suite на 8 шардов
@@ -25,12 +25,12 @@
 
 ## Как включить нативный GitHub Merge Queue
 
-1. Создайте две защищаемые ветки: `main-no-mq` и `main-mq`.
+1. Создайте две защищаемые ветки: `main-no-mq` и `main`.
 2. Настройте Branch protection для `main-no-mq`:
 	 - включите Required status checks
 	 - выберите check из workflow `CI Baseline (No Merge Queue)`
 	 - не включайте Merge Queue
-3. Настройте Branch protection для `main-mq`:
+3. Настройте Branch protection для `main`:
 	 - включите Required status checks
 	 - выберите check из workflow `CI Merge Queue`
 	 - включите `Require merge queue`
@@ -82,8 +82,8 @@ GH_TOKEN=YOUR_TOKEN npm run metrics:github -- --repo=owner/repo --days=14 --outd
 
 Скрипт сравнивает:
 - `pull_request` для ветки `main-no-mq`
-- `pull_request` для ветки `main-mq`
-- `merge_group` для ветки `main-mq`
+- `pull_request` для ветки `main`
+- `merge_group` для ветки `main`
 
 И выводит:
 - количество run
