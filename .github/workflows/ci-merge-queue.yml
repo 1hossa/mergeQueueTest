@@ -1,0 +1,21 @@
+name: CI Merge Queue
+
+on:
+  pull_request:
+    branches: [main-mq]
+  merge_group:
+    branches: [main-mq]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mq-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  heavy-suite:
+    uses: ./.github/workflows/heavy-suite.yml
+    with:
+      tests: 1400
+      compression: 220

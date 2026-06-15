@@ -1,0 +1,13 @@
+{
+  "name": "merge-queue-performance-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simulation project for comparing CI performance with and without Merge Queue",
+  "type": "module",
+  "scripts": {
+    "compare": "node src/compare.js",
+    "compare:big": "node src/compare.js --prs=120 --tests=1400 --batch=8 --trials=60 --runners=12 --flake=0.002",
+    "compare:sweep": "node src/sweep.js",
+    "metrics:github": "node src/github-metrics.js"
+  }
+}

@@ -1,0 +1,19 @@
+name: CI Baseline (No Merge Queue)
+
+on:
+  pull_request:
+    branches: [main-no-mq]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: baseline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  heavy-suite:
+    uses: ./.github/workflows/heavy-suite.yml
+    with:
+      tests: 1400
+      compression: 220
